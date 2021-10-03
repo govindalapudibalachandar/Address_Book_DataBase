@@ -118,7 +118,7 @@ mysql> select * from contacts;
 +----+------------+-------------+-------------+-------+--------+--------------+-----------------+
 | id | first_name | last_name   | address     | city  | zip    | phone_number | email           |
 +----+------------+-------------+-------------+-------+--------+--------------+-----------------+
-|  1 | Kunal      | Suryawanshi | abc/304,def | Thane | 400606 |   9088845022 | abc@gmail.com   |
+|  1 | govin      | balachandar | abc/304,def | rtccs | 400606 |   9493750846 | abc@gmail.com   |
 |  2 | bala       | chandar     | jkl/101     | mtm   |  52001 |   9441520386 | bala@gmail.com  |
 |  3 | bannu      | main        | rtc/258,abc | mtm   |  52001 |   7981766067 | bannu@gmail.com |
 +----+------------+-------------+-------------+-------+--------+--------------+-----------------+
