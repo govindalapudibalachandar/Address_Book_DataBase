@@ -106,3 +106,20 @@ mysql> select * from contacts;
 |  3 | bannu      | main        | rtc/258,abc | mtm   |  52001 |   7981766067 | bannu@gmail.com |
 +----+------------+-------------+-------------+-------+--------+--------------+-----------------+
 3 rows in set (0.00 sec)
+
+#UC4
+----------------------------------------------------------------------------------------------------------------------
+
+mysql> update contacts set address = 'jkl/101' where first_name='bala';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from contacts;
++----+------------+-------------+-------------+-------+--------+--------------+-----------------+
+| id | first_name | last_name   | address     | city  | zip    | phone_number | email           |
++----+------------+-------------+-------------+-------+--------+--------------+-----------------+
+|  1 | Kunal      | Suryawanshi | abc/304,def | Thane | 400606 |   9088845022 | abc@gmail.com   |
+|  2 | bala       | chandar     | jkl/101     | mtm   |  52001 |   9441520386 | bala@gmail.com  |
+|  3 | bannu      | main        | rtc/258,abc | mtm   |  52001 |   7981766067 | bannu@gmail.com |
++----+------------+-------------+-------------+-------+--------+--------------+-----------------+
+3 rows in set (0.04 sec)
