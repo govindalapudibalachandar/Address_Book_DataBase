@@ -1,5 +1,5 @@
 #UC1
-----------------------------------------
+-------------------------------------
 mysql> create database addressbook;
 Query OK, 1 row affected (0.18 sec)
 
@@ -17,8 +17,9 @@ mysql> show databases;
 | sys                |
 +--------------------+
 8 rows in set (0.00 sec)
+
 #UC2
---------------------------------------------------
+------------------------------
 mysql> use addressbook;
 Database changed
 mysql> create table contacts (
@@ -46,3 +47,62 @@ mysql> desc contacts;
 | email        | varchar(50)  | NO   |     | NULL    |                |
 +--------------+--------------+------+-----+---------+----------------+
 8 rows in set (0.07 sec)
+
+#UC3
+-----------------------------------------------------------------------------------------------------------------
+mysql> insert into contacts(first_name, last_name, address, city, zip, phone_number,email) values("govin", "balachandar", "abc/304,def", "rtccs", 400606, 9493750846, "abc@gmail.com");
+Query OK, 1 row affected (0.13 sec)
+mysql> select * from contacts;
++----+------------+-------------+-------------+-------+--------+--------------+---------------+
+| id | first_name | last_name   | address     | city  | zip    | phone_number | email         |
++----+------------+-------------+-------------+-------+--------+--------------+---------------+
+|  1 | govin      | balachandar | abc/304,def | trccs | 400606 |   9493750846 | abc@gmail.com |
++----+------------+-------------+-------------+-------+--------+--------------+---------------+
+1 row in set (0.05 sec)
+
+mysql>  alter table contacts modify column phone_number bigint;
+Query OK, 1 row affected (1.74 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> desc contacts;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| first_name   | varchar(150) | NO   |     | NULL    |                |
+| last_name    | varchar(150) | NO   |     | NULL    |                |
+| address      | varchar(250) | NO   |     | NULL    |                |
+| city         | varchar(20)  | NO   |     | NULL    |                |
+| zip          | int          | NO   |     | NULL    |                |
+| phone_number | bigint       | YES  |     | NULL    |                |
+| email        | varchar(50)  | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.05 sec)
+
+mysql> update contacts set phone_number = 9088845022 where id=1;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from contacts;
++----+------------+-------------+-------------+-------+--------+--------------+---------------+
+| id | first_name | last_name   | address     | city  | zip    | phone_number | email         |
++----+------------+-------------+-------------+-------+--------+--------------+---------------+
+|  1 | govin      | balachandar  | abc/304,def | rtccs | 400606 |   9493750846 | abc@gmail.com |
++----+------------+-------------+-------------+-------+--------+--------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into contacts(first_name, last_name, address, city, zip, phone_number,email) values("bala", "chandar", "rtc/258,abc", "mtm", 52001, 9441520386, "bala@gmail.com");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into contacts(first_name, last_name, address, city, zip, phone_number,email) values("bannu", "main", "rtc/258,abc", "mtm", 52001, 7981766067, "bannu@gmail.com");
+Query OK, 1 row affected (0.24 sec)
+
+mysql> select * from contacts;
++----+------------+-------------+-------------+-------+--------+--------------+-----------------+
+| id | first_name | last_name   | address     | city  | zip    | phone_number | email           |
++----+------------+-------------+-------------+-------+--------+--------------+-----------------+
+|  1 | govin      | balachandar | abc/304,def | trccs | 400606 |   9493750846 | abc@gmail.com   |
+|  2 | bala       | chandar     | rtc/258,abc | mtm   |  52001 |   9441520386 | bala@gmail.com  |
+|  3 | bannu      | main        | rtc/258,abc | mtm   |  52001 |   7981766067 | bannu@gmail.com |
++----+------------+-------------+-------------+-------+--------+--------------+-----------------+
+3 rows in set (0.00 sec)
