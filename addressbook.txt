@@ -1,5 +1,5 @@
-#uc1:
----------------------------
+#UC1
+----------------------------------------
 mysql> create database addressbook;
 Query OK, 1 row affected (0.18 sec)
 
@@ -17,3 +17,32 @@ mysql> show databases;
 | sys                |
 +--------------------+
 8 rows in set (0.00 sec)
+#UC2
+--------------------------------------------------
+mysql> use addressbook;
+Database changed
+mysql> create table contacts (
+    ->  id int auto_increment primary key,
+    -> first_name varchar (150) not null,
+    -> last_name varchar (150) not null,
+    -> address varchar (250) not null,
+    ->  city varchar (20) not null,
+    -> zip int not null,
+    ->  phone_number int not null,
+    -> email varchar(50) not null);
+Query OK, 0 rows affected (1.68 sec)
+
+mysql> desc contacts;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| first_name   | varchar(150) | NO   |     | NULL    |                |
+| last_name    | varchar(150) | NO   |     | NULL    |                |
+| address      | varchar(250) | NO   |     | NULL    |                |
+| city         | varchar(20)  | NO   |     | NULL    |                |
+| zip          | int          | NO   |     | NULL    |                |
+| phone_number | int          | NO   |     | NULL    |                |
+| email        | varchar(50)  | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.07 sec)
