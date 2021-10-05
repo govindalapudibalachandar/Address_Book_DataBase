@@ -239,3 +239,26 @@ mysql> select * from contacts where city="mtm" or state="andhrapradesh";
 |  2 | bala       | chandar   | jkl/101 | mtm  | andhrapradesh | 52001 |   9441520386 | bala@gmail.com |
 +----+------------+-----------+---------+------+---------------+-------+--------------+----------------+
 1 row in set (0.00 sec)
+=====================================================================================================================================================
+#UC7------->Ability to understand the size of address book by City and State
+=========================================================================================================================================================
+
+mysql> SELECT city, count(*) from contacts group by city;
++------------+----------+
+| city       | count(*) |
++------------+----------+
+| mtm        |        1 |
+| vijayawada |        1 |
+| pune       |        1 |
++------------+----------+
+3 rows in set (0.05 sec)
+
+mysql> SELECT state, count(*) from contacts group by state;
++---------------+----------+
+| state         | count(*) |
++---------------+----------+
+| andhrapradesh |        1 |
+| andhraprdesh  |        1 |
+| Maharashtra   |        1 |
++---------------+----------+
+3 rows in set (0.00 sec)
