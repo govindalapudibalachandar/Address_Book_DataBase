@@ -137,3 +137,105 @@ mysql>  select * from contacts;
 |  3 | bannu      | main      | rtc/258,abc | mtm  | 52001 |   7981766067 | bannu@gmail.com |
 +----+------------+-----------+-------------+------+-------+--------------+-----------------+
 2 rows in set (0.04 sec)
+============================================================================================================
+#UC6----> Ability to Retrieve Person belonging to a City or State from the Address Book
+=============================================================================================================
+
+mysql> select first_name from contacts where city = "mtm";
++------------+
+| first_name |
++------------+
+| bala       |
+| bannu      |
++------------+
+2 rows in set (0.00 sec)
+
+mysql>  ALTER TABLE contacts add state varchar(20) not null after city ;
+Query OK, 0 rows affected (2.28 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from contact;
+ERROR 1146 (42S02): Table 'addressbook.contact' doesn't exist
+mysql> select * from contacts;
++----+------------+-----------+-------------+------+-------+-------+--------------+-----------------+
+| id | first_name | last_name | address     | city | state | zip   | phone_number | email           |
++----+------------+-----------+-------------+------+-------+-------+--------------+-----------------+
+|  2 | bala       | chandar   | jkl/101     | mtm  |       | 52001 |   9441520386 | bala@gmail.com  |
+|  3 | bannu      | main      | rtc/258,abc | mtm  |       | 52001 |   7981766067 | bannu@gmail.com |
++----+------------+-----------+-------------+------+-------+-------+--------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE contacts set state="andhrapradesh" where id=1 or id =2;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  INSERT INTO contacts(first_name,last_name,address,city,state,zip,phone_number,email) VALUE
+    -> ("pandu","ranga","20/658","vijayawada","andhraprdesh",100010,989866666,"pandu@gmail.com");
+Query OK, 1 row affected (0.08 sec)
+
+mysql>  INSERT INTO contacts(first_name,last_name,address,city,state,zip,phone_number,email) VALUE
+    -> ("phani","kumar","11/212","pune","Maharashtra",23410,731230908,"phani@gmail.com");
+Query OK, 1 row affected (0.29 sec)
+
+mysql> select * from contacts;
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+| id | first_name | last_name | address     | city       | state         | zip    | phone_number | email           |
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+|  2 | bala       | chandar   | jkl/101     | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com  |
+|  3 | bannu      | main      | rtc/258,abc | mtm        |               |  52001 |   7981766067 | bannu@gmail.com |
+|  4 | pandu      | ranga     | 20/658      | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com |
+|  5 | phani      | kumar     | 11/212      | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com |
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql>  UPDATE contacts set state="andhrapradesh" where id=2;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from contacts;
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+| id | first_name | last_name | address     | city       | state         | zip    | phone_number | email           |
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+|  2 | bala       | chandar   | jkl/101     | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com  |
+|  3 | bannu      | main      | rtc/258,abc | mtm        |               |  52001 |   7981766067 | bannu@gmail.com |
+|  4 | pandu      | ranga     | 20/658      | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com |
+|  5 | phani      | kumar     | 11/212      | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com |
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql>  UPDATE contacts set state="andhrapradesh" where id=2;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from contacts;
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+| id | first_name | last_name | address     | city       | state         | zip    | phone_number | email           |
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+|  2 | bala       | chandar   | jkl/101     | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com  |
+|  3 | bannu      | main      | rtc/258,abc | mtm        |               |  52001 |   7981766067 | bannu@gmail.com |
+|  4 | pandu      | ranga     | 20/658      | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com |
+|  5 | phani      | kumar     | 11/212      | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com |
++----+------------+-----------+-------------+------------+---------------+--------+--------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> delete from contacts where id = 3;
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from contacts;
++----+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+| id | first_name | last_name | address | city       | state         | zip    | phone_number | email           |
++----+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+|  2 | bala       | chandar   | jkl/101 | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com  |
+|  4 | pandu      | ranga     | 20/658  | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com |
+|  5 | phani      | kumar     | 11/212  | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com |
++----+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from contacts where city="mtm" or state="andhrapradesh";
++----+------------+-----------+---------+------+---------------+-------+--------------+----------------+
+| id | first_name | last_name | address | city | state         | zip   | phone_number | email          |
++----+------------+-----------+---------+------+---------------+-------+--------------+----------------+
+|  2 | bala       | chandar   | jkl/101 | mtm  | andhrapradesh | 52001 |   9441520386 | bala@gmail.com |
++----+------------+-----------+---------+------+---------------+-------+--------------+----------------+
+1 row in set (0.00 sec)
