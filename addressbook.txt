@@ -330,3 +330,25 @@ mysql> SELECT Type, count(*) from contacts group by Type;
 | frieds |        2 |
 +--------+----------+
 2 rows in set (0.00 sec)
+
+===============================================================================================================
+	#UC11 Ability to add person to both Friend and Family
+================================================================================================================
+mysql>  insert into contacts(type, first_name, last_name, address, city, state, zip, phone_number, email) values
+    -> ("Family","prabhas","darling","410/410","hyderabad", "andhrapradesh",22112,99999999,"prabhas@gmail.com"),
+    -> ("Friends","ravi","teja","315/213","mtm", "andhrapradesh",20022,969790876,"ravi@gmail.com");
+Query OK, 2 rows affected (0.30 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from contacts;
++----+---------+------------+-----------+---------+------------+---------------+--------+--------------+-------------------+
+| id | type    | first_name | last_name | address | city       | state         | zip    | phone_number | email             |
++----+---------+------------+-----------+---------+------------+---------------+--------+--------------+-------------------+
+|  2 | family  | bala       | chandar   | jkl/101 | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com    |
+|  4 | family  | pandu      | ranga     | 20/658  | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com   |
+|  5 | frieds  | phani      | kumar     | 11/212  | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com   |
+|  6 | frieds  | suraj      | kumar     | 66/212  | pune       | Maharashtra   |  23410 |    722123213 | suraj@gmail.com   |
+|  7 | Family  | prabhas    | darling   | 410/410 | hyderabad  | andhrapradesh |  22112 |     99999999 | prabhas@gmail.com |
+|  8 | Friends | ravi       | teja      | 315/213 | mtm        | andhrapradesh |  20022 |    969790876 | ravi@gmail.com    |
++----+---------+------------+-----------+---------+------------+---------------+--------+--------------+-------------------+
+6 rows in set (0.04 sec)
