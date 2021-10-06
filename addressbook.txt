@@ -264,7 +264,7 @@ mysql> SELECT state, count(*) from contacts group by state;
 3 rows in set (0.00 sec)
 
 ==========================================================================================================================================================
-#UC7-------->Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+#UC8-------->Ability to retrieve entries sorted alphabetically by Person’s name for a given city
 ==========================================================================================================================================================
 
 mysql>  SELECT * from contacts where city ="mtm" order by first_name;
@@ -274,3 +274,46 @@ mysql>  SELECT * from contacts where city ="mtm" order by first_name;
 |  2 | bala       | chandar   | jkl/101 | mtm  | andhrapradesh | 52001 |   9441520386 | bala@gmail.com |
 +----+------------+-----------+---------+------+---------------+-------+--------------+----------------+
 1 row in set (0.05 sec)
+===============================================================================================================
+#UC9 Ability to identify each Address Book with name and Type.
+================================================================================================================
+mysql>  alter table contacts add type varchar (20) after id;
+Query OK, 0 rows affected (1.86 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from contacts;
++----+------+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+| id | type | first_name | last_name | address | city       | state         | zip    | phone_number | email           |
++----+------+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+|  2 | NULL | bala       | chandar   | jkl/101 | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com  |
+|  4 | NULL | pandu      | ranga     | 20/658  | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com |
+|  5 | NULL | phani      | kumar     | 11/212  | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com |
+|  6 | NULL | suraj      | kumar     | 66/212  | pune       | Maharashtra   |  23410 |    722123213 | suraj@gmail.com |
++----+------+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+4 rows in set (0.00 sec)
+mysql> update contacts set type ="family" where first_name="bala";
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update contacts set type ="family" where first_name="pandu";
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update contacts set type ="frieds" where first_name="phani";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update contacts set type ="frieds" where first_name="suraj";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from contacts;
++----+--------+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+| id | type   | first_name | last_name | address | city       | state         | zip    | phone_number | email           |
++----+--------+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+|  2 | family | bala       | chandar   | jkl/101 | mtm        | andhrapradesh |  52001 |   9441520386 | bala@gmail.com  |
+|  4 | family | pandu      | ranga     | 20/658  | vijayawada | andhraprdesh  | 100010 |    989866666 | pandu@gmail.com |
+|  5 | frieds | phani      | kumar     | 11/212  | pune       | Maharashtra   |  23410 |    731230908 | phani@gmail.com |
+|  6 | frieds | suraj      | kumar     | 66/212  | pune       | Maharashtra   |  23410 |    722123213 | suraj@gmail.com |
++----+--------+------------+-----------+---------+------------+---------------+--------+--------------+-----------------+
+4 rows in set (0.04 sec)
